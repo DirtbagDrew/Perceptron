@@ -28,12 +28,14 @@ def show_images(data):
     plt.show()
     imgplot=plt.imshow(data[0])
     plt.savefig('img1.png')
+    plt.gcf().clear()
     # prints and saves the second image
     print('image 2')
     imgplot=plt.imshow(data[1])
     plt.show()
     imgplot=plt.imshow(data[1])
     plt.savefig('img2.png')
+    plt.gcf().clear()
     
     
 
@@ -51,26 +53,19 @@ def show_features(data, label):
     Returns:
         Do not return any arguments, just save the 2-D scatter plot of the features you plot for your report.
 	'''
-    '''
-    # dont think this is correct, but keeping here till figured out
-    # plots the data from the image files
-    print('printing data')
-    # plots data from image file 1
-    print('image 1 data')
-    print(data[0])
-    plt.plot(data[0],'ro')
+    
+    size=len(data)
+    for x in range(0,size):
+        if label[x] == -1:
+            plt.plot(data[x],'b+')
+        elif label[x] == 1:
+            plt.plot(data[x],'r*')
+    print()
+    print('features plot')
     plt.show()
-    # plots data from image file 2
-    print('image 2 data')
-    print(data[0])
-    plt.plot(data[1],'bo')
-    plt.show()
-    # plots the two images data on the same plot in order to compare the two
-    print('contrasting the two data')
-    plt.plot(data[0],'ro')
-    plt.plot(data[1],'bo')
-    plt.show()
-    '''
+    plt.gcf().clear()
+        
+    #print(check1)
 
 def perceptron(data, label, max_iter, learning_rate):
 	'''
