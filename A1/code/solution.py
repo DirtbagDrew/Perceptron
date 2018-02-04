@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg 
 from helper import *
+from decimal import Decimal
+
 
 '''
 Homework1: perceptron classifier
@@ -64,11 +66,10 @@ def show_features(data, label):
     print('features plot')
     plt.show()
     plt.gcf().clear()
-        
-    #print(check1)
 
 def perceptron(data, label, max_iter, learning_rate):
-	'''
+    w = np.zeros((1,max_iter))
+    '''
 	The perceptron classifier function.
 
 	Args:
@@ -82,6 +83,19 @@ def perceptron(data, label, max_iter, learning_rate):
 	Returns:
 		w: the seperater with shape (1, 3). You must initilize it with w = np.zeros((1,d))
 	'''
+    print(str(data[0]))
+    
+    for i in range (max_iter):
+        for j in range(len(data)):
+            x, y = (str(data[j]).split())
+            x=float(x)
+            #y1, y2 = y.split("-")
+            #print(y)
+            #y=float(y)
+            #if(np.dot(x,w)*y) <= 0:
+            #    w=w+learning_rate*x*y
+    #return w
+        
 
 
 def show_result(data, label, w):

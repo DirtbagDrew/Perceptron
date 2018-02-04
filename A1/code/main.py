@@ -15,7 +15,7 @@ def play_with_data():
 
 
 def play_with_features():
-	#get data
+	# get data
     traindataloc,testdataloc = "../data/train.txt", "../data/test.txt"
     train_data,train_label = load_features(traindataloc)
     test_data, test_label = load_features(testdataloc)
@@ -47,13 +47,13 @@ def play_with_result():
     show_result(test_data[:,1:3], test_label, w)
     print("play with result done!")
 
-
+#
 if __name__ == '__main__':
 	## test question (a)
     play_with_data()
 	## test question (b)
     play_with_features()
-	## test question (c)
+	## test question (c) 
     test_accuracy()
 	# test question (d)
     play_with_result()
