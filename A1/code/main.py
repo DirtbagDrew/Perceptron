@@ -51,7 +51,7 @@ def play_with_result():
 if __name__ == '__main__':
 	## test question (a)
     play_with_data()
-	## test question (b)
+	## test question (b)                                                                         
     play_with_features()
 	## test question (c) 
     test_accuracy()
