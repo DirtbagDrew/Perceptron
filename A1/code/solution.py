@@ -68,7 +68,6 @@ def show_features(data, label):
     plt.gcf().clear()
 
 def perceptron(data, label, max_iter, learning_rate):
-    w = np.zeros(3)
     '''
 	The perceptron classifier function.
 
@@ -83,58 +82,27 @@ def perceptron(data, label, max_iter, learning_rate):
 	Returns:
 		w: the seperater with shape (1, 3). You must initilize it with w = np.zeros((1,d))
 	'''
-    '''
-    one, two,x, y = (str(data[1]).split())
-    print(x)
-    print(y)
-    y1, y2 = y.split("]")
-    print(y1)
-    y1=float(y1)
-    '''
-    '''
-    print(str(data[0]))
-    print(str(data[1]))
-    print(str(data[2]))
-    print(str(data[3]))
-    print(str(data[4]))
-    print(str(data[5]))
-    print(str(data[6]))
-    print(str(data[7]))
-    print(str(data[8]))
-    print(str(data[9]))
-    print(str(data[10]))
-    print(str(data[11]))
-    print(str(data[12]))
-    print(str(data[13]))
-    print(str(data[14]))
-    print(str(data[15]))
-    print(str(data[16]))
-    print(str(data[17]))
-    print(str(data[18]))
-    '''
+    w = np.zeros(3)
     learning_rate=float(learning_rate)
-    v=1
     for i in range (max_iter):
         for j in range(len(data)-1):
-            try:
-                one, two, x, y = (str(data[j]).split())
-                y, y2 = y.split("]")
-                y=float(y)
-            except ValueError:
-                one, two, x, y, three = (str(data[j]).split())
-                y=float(y)    
-            x=float(x)
-            temp = np.array([x,y,v])
-            if(np.dot(temp,w)*label[j]) <= 0:
-                w=w+(learning_rate*label[j]*temp)
+            if sign(np.dot(data[j],np.transpose(w))) != label[j]:
+                w=w+learning_rate*data[j]*label[j]
     return w
-    
-    
-    
 
 
 def show_result(data, label, w):
-	'''
+    size=len(data)
+    for x in range(0,size):
+        if label[x] == -1:
+            plt.plot(data[x],'b+')
+        elif label[x] == 1:
+            plt.plot(data[x],'r*')
+    print()
+    print('result plot')
+    plt.show()
+    plt.gcf().clear()
+    '''
 	This function is used for plot the test data with the separators and save it.
 	
 	Args:
@@ -146,6 +114,7 @@ def show_result(data, label, w):
 	Returns:
 	Do not return any arguments, just save the image you plot for your report.
 	'''
+    
 
 
 #-------------- Implement your code above ------------#
