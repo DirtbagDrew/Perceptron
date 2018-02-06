@@ -90,6 +90,7 @@ def perceptron(data, label, max_iter, learning_rate):
         for j in range(n):
             if sign(np.dot(data[j],np.transpose(w))) != label[j]:
                 w=w+learning_rate*data[j]*label[j]
+    print(w)
     return w
 
 
@@ -100,6 +101,7 @@ def show_result(data, label, w):
             plt.plot(data[x],'b+')
         elif label[x] == 1:
             plt.plot(data[x],'r*')
+    plt.plot(w)
     print()
     print('result plot')
     plt.show()
