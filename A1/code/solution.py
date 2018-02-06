@@ -83,6 +83,7 @@ def perceptron(data, label, max_iter, learning_rate):
 		w: the seperater with shape (1, 3). You must initilize it with w = np.zeros((1,d))
 	'''
     n, _ = data.shape
+    
     w = np.zeros(3)
     learning_rate=float(learning_rate)
     for i in range (max_iter):
