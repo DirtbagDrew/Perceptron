@@ -56,14 +56,15 @@ def show_features(data, label):
         Do not return any arguments, just save the 2-D scatter plot of the features you plot for your report.
 	'''
     
-    size=len(data)
-    for x in range(0,size):
+    size=len(data[:])
+    for x in range(size):
         if label[x] == -1:
-            plt.plot(data[x],'b+')
+            plt.plot(data[x][0],data[x][1],'b+')
         elif label[x] == 1:
-            plt.plot(data[x],'r*')
+            plt.plot(data[x][0],data[x][1],'ro')
     print()
     print('features plot')
+    plt.savefig('img3.png')
     plt.show()
     plt.gcf().clear()
 
@@ -83,29 +84,18 @@ def perceptron(data, label, max_iter, learning_rate):
 		w: the seperater with shape (1, 3). You must initilize it with w = np.zeros((1,d))
 	'''
     n, _ = data.shape
-    
-    w = np.zeros(3)
+    w = np.zeros((1, 3))
     learning_rate=float(learning_rate)
     for i in range (max_iter):
         for j in range(n):
             if sign(np.dot(data[j],np.transpose(w))) != label[j]:
                 w=w+learning_rate*data[j]*label[j]
-    print(w)
+                break;
     return w
 
 
 def show_result(data, label, w):
-    size=len(data)
-    for x in range(0,size):
-        if label[x] == -1:
-            plt.plot(data[x],'b+')
-        elif label[x] == 1:
-            plt.plot(data[x],'r*')
-    plt.plot(w)
-    print()
-    print('result plot')
-    plt.show()
-    plt.gcf().clear()
+    
     '''
 	This function is used for plot the test data with the separators and save it.
 	
@@ -118,8 +108,24 @@ def show_result(data, label, w):
 	Returns:
 	Do not return any arguments, just save the image you plot for your report.
 	'''
+    size=len(data[:])
+    for x in range(size):
+        if label[x] == -1:
+            plt.plot(data[x][0],data[x][1],'b+')
+        elif label[x] == 1:
+            plt.plot(data[x][0],data[x][1],'ro')
+    x=[-.8,0]
+    a=-w[0][1]/w[0][2]
+    b=-w[0][0]/w[0][2]
+    y1=a*x[0]+b
+    y2=a*x[1]+b
+    plt.plot([x[0],x[1]],[y1,y2])
+    print()
+    print('features plot')
+    plt.show()
+    plt.savefig('img4.png')
+    plt.gcf().clear()
     
-
 
 #-------------- Implement your code above ------------#
 def accuracy_perceptron(data, label, w):
