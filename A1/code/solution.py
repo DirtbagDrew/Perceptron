@@ -45,7 +45,6 @@ def show_images(data):
 def show_features(data, label):
     '''
     This function is used for plot a 2-D scatter plot of the features and save it. 
-
     Args:
         data: train features with shape (1561, 2). The shape represents total 1561 samples and 
 	     each sample has 2 features.
@@ -72,7 +71,6 @@ def show_features(data, label):
 def perceptron(data, label, max_iter, learning_rate):
     '''
 	The perceptron classifier function.
-
 	Args:
 	data: train data with shape (1561, 3), which means 1561 samples and 
 		  each sample has 3 features.(1, symmetry, average internsity)
@@ -156,5 +154,3 @@ def test_perceptron(max_iter, learning_rate):
     #test perceptron model
     test_acc = accuracy_perceptron(test_data, test_label, w)
     return w, train_acc, test_acc
-
-
