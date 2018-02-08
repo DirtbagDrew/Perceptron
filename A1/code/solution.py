@@ -61,10 +61,10 @@ def show_features(data, label):
         if label[x] == -1:
             plt.plot(data[x][0],data[x][1],'b+')
         elif label[x] == 1:
-            plt.plot(data[x][0],data[x][1],'ro')
+            plt.plot(data[x][0],data[x][1],'r*')
+    plt.savefig('img3.png')
     print()
     print('features plot')
-    plt.savefig('img3.png')
     plt.show()
     plt.gcf().clear()
 
@@ -120,10 +120,10 @@ def show_result(data, label, w):
     y1=a*x[0]+b
     y2=a*x[1]+b
     plt.plot([x[0],x[1]],[y1,y2])
+    plt.savefig('img4.png')
     print()
     print('features plot')
     plt.show()
-    plt.savefig('img4.png')
     plt.gcf().clear()
     
 
