@@ -57,11 +57,12 @@ def show_features(data, label):
 	'''
     
     size=len(data[:])
-    for x in range(size):
-        if label[x] == -1:
-            plt.plot(data[x][0],data[x][1],'b+')
-        elif label[x] == 1:
-            plt.plot(data[x][0],data[x][1],'r*')
+    for x in range(size): #plot each point
+        if label[x] == -1: #data[x] is a 5
+            plt.plot(data[x][0],data[x][1],'b+') #plot a blue plus
+        elif label[x] == 1: #data[x] is a 1
+            plt.plot(data[x][0],data[x][1],'r*') #plot a red star
+    #print and save image
     plt.savefig('img3.png')
     print()
     print('features plot')
@@ -88,8 +89,9 @@ def perceptron(data, label, max_iter, learning_rate):
     learning_rate=float(learning_rate)
     for i in range (max_iter):
         for j in range(n):
-            if sign(np.dot(data[j],np.transpose(w))) != label[j]:
-                w=w+learning_rate*data[j]*label[j]
+            if sign(np.dot(data[j],np.transpose(w))) != label[j]:# data[j] is miscategorized
+                #correct w
+                w=w+learning_rate*data[j]*label[j]  
                 break;
     return w
 
@@ -114,12 +116,18 @@ def show_result(data, label, w):
             plt.plot(data[x][0],data[x][1],'b+')
         elif label[x] == 1:
             plt.plot(data[x][0],data[x][1],'ro')
+    #x values for the two coordinates to plot the weight line
     x=[-.8,0]
+    #calculate the slope
     a=-w[0][1]/w[0][2]
+    #calculate the y intercept
     b=-w[0][0]/w[0][2]
+    #finding the y values for the line
     y1=a*x[0]+b
     y2=a*x[1]+b
+    #ploting the line for w
     plt.plot([x[0],x[1]],[y1,y2])
+    #print and save the plot
     plt.savefig('img4.png')
     print()
     print('features plot')
